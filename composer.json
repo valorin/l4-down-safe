@@ -1,6 +1,7 @@
 {
     "name": "valorin/l4-down-safe",
     "description": "Artisan command for switching a Laravel 4 queue worker into maintenance mode alongside the application safely.",
+    "license": "MIT",
     "keywords": ["laravel", "queue", "maintenance"],
     "authors": [
         {
