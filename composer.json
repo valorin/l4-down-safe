@@ -1,0 +1,21 @@
+{
+    "name": "valorin/l4-down-safe",
+    "description": "Artisan command for switching a Laravel 4 queue worker into maintenance mode alongside the application safely.",
+    "keywords": ["laravel", "queue", "maintenance"],
+    "authors": [
+        {
+            "name": "Stephen Rees-Carter",
+            "email": "stephen@rees-carter.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Valorin\\L4DownSafe": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
