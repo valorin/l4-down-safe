@@ -51,7 +51,7 @@ class DownSafe extends Command {
             // Take Application down.
             touch(Config::get('app.manifest').'/down');
 
-            // Add flag and log message
+            // Add Log message
             Log::info("Application is down, pausing queue while maintenance happens.");
 
             // Loop, waiting for app to come back up
@@ -66,11 +66,11 @@ class DownSafe extends Command {
             die();
         });
 
-        // Wait until shutdown file exists
+        // Wait until Maintenance Mode enabled.
         while (!App::isDownForMaintenance()) {
             sleep(1);
         }
 
-        $this->info("Application successfully shutdown.");
+        $this->info("Application maintenance mode enabled.");
     }
 }
