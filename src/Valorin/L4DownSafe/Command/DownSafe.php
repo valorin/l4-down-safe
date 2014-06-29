@@ -2,12 +2,13 @@
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Queue;
 
-class DownSafe extends Command {
-
+class DownSafe extends Command
+{
     /**
      * The console command name.
      *
@@ -46,10 +47,10 @@ class DownSafe extends Command {
         }
 
         // Push job onto queue
-        Queue::push(function($job) {
+        Queue::push(function ($job) {
 
             // Take Application down.
-            touch(Config::get('app.manifest').'/down');
+            Artisan::call('down');
 
             // Add Log message
             Log::info("Application is down, pausing queue while maintenance happens.");
@@ -62,8 +63,8 @@ class DownSafe extends Command {
 
             // App is back online, kill worker to restart daemon.
             Log::info("Application is up, rebooting queue.");
+            Artisan::call('queue:restart');
             $job->delete();
-            die();
         });
 
         // Wait until Maintenance Mode enabled.
