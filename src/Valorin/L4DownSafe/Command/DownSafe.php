@@ -42,7 +42,8 @@ class DownSafe extends Command
     {
         // Check not 'sync'
         if (Config::get('queue.default') == "sync") {
-            $this->error("Sorry, 'sync' queue driver not supported!");
+            Artisan::call('down');
+            $this->info("Application maintenance mode enabled.");
             return;
         }
 

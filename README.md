@@ -15,7 +15,7 @@ Installation
 Add the package to your application with composer:
 
 ```
-composer require "valorin/l4-down-safe:dev-master"
+composer require "valorin/l4-down-safe:~1.1"
 ```
 
 Add the `L4DownSafeServiceProvider` service provider to the `providers` list in `./app/config/app.php`:
@@ -45,6 +45,8 @@ When the script finishes executing, the application is in maintenance mode. When
 Version History
 ---------------
 
-`v1.0.0` -- Laravel v4.2.0+, using a manual `die();` on the worker when the application comes back up.
+`v1.1.1` -- Switched to simply take down the application if `sync` queue specified.
 
 `v1.1.0` -- Requires Laravel v4.2.5, and uses the `./artisan queue:restart` command to trigger a daemon worker restart.
+
+`v1.0.0` -- Laravel v4.2.0+, using a manual `die();` on the worker when the application comes back up.
